@@ -1,9 +1,11 @@
-import Vue from 'vue'
+import Vue from 'vue';
 import VueStash from 'vue-stash';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import Log from 'loglevel';
-import App from './App.vue'
+import App from './App.vue';
+import routes from './routes.js';
+import store from './store.js';
 
 Vue.use(VueStash);
 Vue.use(VueRouter);
