@@ -9,7 +9,7 @@
         "dev": "npm-run-all --parallel watchify serve",
         "build": "cross-env NODE_ENV=production browserify -g envify src/main.js | uglifyjs -c warnings=false -m > dist/build.js",
         "test-js": "xo",
-        "test-css": "node_modules/stylelint/bin/stylelint.js 'static/css/*.css'",
+        "test-css": "node_modules/stylelint/bin/stylelint.js 'static/css/*.css'"
     },
     "dependencies": {
         "loglevel": "^1.4.1",
