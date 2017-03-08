@@ -1,5 +1,5 @@
-import HomeComponent from './views/Home.vue'
-import NotFoundComponent from './views/NotFound.vue'
+import HomeComponent from './views/Home.vue';
+import NotFoundComponent from './views/NotFound.vue';
 
 export default [{
     name: 'home',

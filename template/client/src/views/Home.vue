@@ -6,7 +6,7 @@
 export default {
     name: 'home',
     store: [],
-    data () {
+    data () {s
         return {
         }
     },
