@@ -15,6 +15,7 @@ export const addMessage = function({commit}, text) {
 };
 
 export const signin = function({commit}, text) {
+    commit(types.IS_LOADING, true);
     let params = text ? {
         strategy: 'local',
         email: text.username,
@@ -30,14 +31,21 @@ export const signin = function({commit}, text) {
         commit(types.REMOVE_ERROR, 'authentication');
         return new Promise(function(resolve) {
             resolve(user);
+            commit(types.IS_LOADING, false);
         });
     }).catch(err => {
-        app.set('user', null);
-        commit(types.UPDATE_USER, null);
-        commit(types.ADD_ERROR, {
-            type: 'authentication',
-            err
-        });
+        // Make sure we're actually trying to login with something
+        // If we don't have a JWT and no strategy was set then this was probably from the App.vue when it first loads
+        if (params !== {} && err.message !== 'Could not find stored JWT and no authentication strategy was given') {
+            console.log('setting an error');
+            app.set('user', null);
+            commit(types.UPDATE_USER, null);
+            commit(types.ADD_ERROR, {
+                type: 'authentication',
+                err
+            });
+        }
+        commit(types.IS_LOADING, false);
     });
 };
 

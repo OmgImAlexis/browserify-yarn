@@ -12,7 +12,8 @@ const state = {
     user: {},
     errors: {
         authentication: null
-    }
+    },
+    isLoading: true
 };
 
 const mutations = {
@@ -36,6 +37,9 @@ const mutations = {
     },
     [types.REMOVE_ERROR](state, type) {
         state.errors[type] = null;
+    },
+    [types.IS_LOADING](state, toggle) {
+        state.isLoading = toggle;
     }
 };
 
