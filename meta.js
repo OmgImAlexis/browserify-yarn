@@ -37,13 +37,14 @@ module.exports = {
                 clientGit = `${data.needClient ? `cd ${data.destDirName}/client && git init && cd ../..` : ''}`;
                 serverGit = `${data.needServer ? `cd ${data.destDirName}/server && git init && cd ../..` : ''}`;
                 exec(`${clientGit} && ${serverGit}`, (error, stdout, stderr) => {
-                exec('echo $(pwd)', (error, stdout, stderr) => {
-                    if (error) {
-                        logger.log(`exec error: ${error}`);
-                        return;
-                    }
+                    exec('echo $(pwd)', (error, stdout, stderr) => {
+                        if (error) {
+                            logger.log(`exec error: ${error}`);
+                            return;
+                        }
+                    });
+                    logger.log(`To get started:\n\n  cd ${data.destDirName}\n  yarn install\n  yarn start-dev`);
                 });
-                logger.log(`To get started:\n\n  cd ${data.destDirName}\n  yarn install\n  yarn start-dev`);
             }
         }
     },
